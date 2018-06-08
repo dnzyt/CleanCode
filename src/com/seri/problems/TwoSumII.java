@@ -18,9 +18,6 @@ public class TwoSumII {
 
 
     }
-
-
-
     private int binarySearch(int[] array, int target, int start) {
         int left = start;
         int right = array.length - 1;
@@ -34,6 +31,24 @@ public class TwoSumII {
         }
 
         return (left == right && array[left] == target) ? left : -1;
+    }
 
+    /*
+    * Another solution - O(n), O(1)
+    * */
+
+    public int[] twoSumAlt(int[] numbers, int target) {
+        int left = 0;
+        int right = numbers.length - 1;
+        while (left < right) {
+            if (numbers[left] + numbers[right] == target) {
+                return new int[] { left, right };
+            } else if (numbers[left] + numbers[right] < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        throw new IllegalArgumentException("No Two Sum solution");
     }
 }
